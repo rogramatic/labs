@@ -5,26 +5,29 @@
 |
 | Product-specific design system for the RevenueFlow Lab.
 |
-| Inspired by the beach image:
+| The palette is derived from the RevenueFlow beach imagery:
 |
-| Brand     → Deep ocean
-| Accent    → Shallow ocean
-| Cool      → Sky
-| Highlight → Sand
-| Neutral   → Wave / foam
+|   Deep Ocean      → Primary / brand
+|   Shallow Water   → Interactive accent
+|   Sky             → Cool supporting surfaces
+|   Sand            → Warm highlight / secondary
+|   Foam            → Neutral surfaces
 |
-| main.css exposes these variables as Tailwind utilities.
+| The goal is not to make every component blue. Instead, the UI mixes the
+| five beach tones according to their semantic role so the overall product
+| feels coastal without becoming visually noisy.
 |
-| Examples:
+| main.css exposes these variables through Tailwind utilities such as:
 |
 |   bg-brand-500
 |   text-brand-900
 |   bg-accent-500
+|   bg-cool-100
 |   bg-highlight-100
 |   bg-surface
 |   text-ink
 |
-| This file also defines RevenueFlow's shadcn semantic colors:
+| shadcn components consume the semantic variables further below:
 |
 |   bg-primary
 |   bg-secondary
@@ -38,101 +41,150 @@
 |
 */
 
+
 .revenueflow-theme {
 
     /*
     |--------------------------------------------------------------------------
     | Primary Palette: Deep Ocean
     |--------------------------------------------------------------------------
+    |
+    | Based on the deeper blue-green water near the horizon.
+    |
+    | Use for:
+    |
+    |   - Primary buttons
+    |   - Strong headings
+    |   - Important links
+    |   - Active indicators
+    |   - Focus states
+    |
     */
 
-    --project-brand-50: #f2f8f9;
-    --project-brand-100: #dcecef;
-    --project-brand-200: #bddde2;
-    --project-brand-300: #91c7cf;
-    --project-brand-400: #64aeba;
-    --project-brand-500: #458f9d;
-    --project-brand-600: #397684;
-    --project-brand-700: #32616d;
-    --project-brand-800: #2e525b;
-    --project-brand-900: #29464e;
-    --project-brand-950: #172e34;
+    --project-brand-50: #f0f7f8;
+    --project-brand-100: #d9ecee;
+    --project-brand-200: #b5dadd;
+    --project-brand-300: #86c0c5;
+    --project-brand-400: #5aa4aa;
+    --project-brand-500: #3f8b94;
+    --project-brand-600: #32757e;
+    --project-brand-700: #2b6069;
+    --project-brand-800: #274f57;
+    --project-brand-900: #23434a;
+    --project-brand-950: #12282d;
 
 
     /*
     |--------------------------------------------------------------------------
-    | Accent Palette: Shallow Ocean
+    | Accent Palette: Shallow Water
     |--------------------------------------------------------------------------
+    |
+    | Inspired by the turquoise water approaching the shoreline.
+    |
+    | Use for:
+    |
+    |   - Sidebar hover states
+    |   - Selected menu items
+    |   - Interactive highlights
+    |   - Badges
+    |   - Secondary data visualization
+    |
     */
 
-    --project-accent-50: #f1f9f8;
-    --project-accent-100: #d7efec;
-    --project-accent-200: #b1dfda;
-    --project-accent-300: #80c7c0;
-    --project-accent-400: #58aca6;
-    --project-accent-500: #42938d;
-    --project-accent-600: #367772;
-    --project-accent-700: #30605d;
-    --project-accent-800: #2b4f4d;
-    --project-accent-900: #274342;
-    --project-accent-950: #132726;
+    --project-accent-50: #f0f9f8;
+    --project-accent-100: #d8f0ed;
+    --project-accent-200: #b6e2dc;
+    --project-accent-300: #8acfc6;
+    --project-accent-400: #5fb6ac;
+    --project-accent-500: #3a8f89;
+    --project-accent-600: #317a75;
+    --project-accent-700: #2b635f;
+    --project-accent-800: #28514f;
+    --project-accent-900: #244442;
+    --project-accent-950: #102a29;
 
 
     /*
     |--------------------------------------------------------------------------
     | Cool Supporting Palette: Sky
     |--------------------------------------------------------------------------
+    |
+    | Derived from the pale blue sky above the horizon.
+    |
+    | Use for:
+    |
+    |   - Informational surfaces
+    |   - Muted dashboard areas
+    |   - Cool backgrounds
+    |   - Supporting charts
+    |
     */
 
-    --project-cool-50: #f5fbfd;
-    --project-cool-100: #e8f6fa;
-    --project-cool-200: #d4eef5;
-    --project-cool-300: #b6e1ee;
-    --project-cool-400: #8dcede;
-    --project-cool-500: #68b5ca;
-    --project-cool-600: #4d97ad;
-    --project-cool-700: #407a8d;
-    --project-cool-800: #396675;
-    --project-cool-900: #345662;
-    --project-cool-950: #223840;
+    --project-cool-50: #f5fcfe;
+    --project-cool-100: #e5f6fb;
+    --project-cool-200: #cfeef6;
+    --project-cool-300: #ade3f3;
+    --project-cool-400: #7fd2e7;
+    --project-cool-500: #57bdd7;
+    --project-cool-600: #3c9db9;
+    --project-cool-700: #337f97;
+    --project-cool-800: #30697b;
+    --project-cool-900: #2e5967;
+    --project-cool-950: #1b3942;
 
 
     /*
     |--------------------------------------------------------------------------
     | Highlight Palette: Sand
     |--------------------------------------------------------------------------
+    |
+    | Derived from the warm golden sand in the foreground.
+    |
+    | Use for:
+    |
+    |   - Secondary buttons
+    |   - Warm highlights
+    |   - Selected metrics
+    |   - Important but non-primary callouts
+    |
     */
 
-    --project-highlight-50: #fcf8f3;
-    --project-highlight-100: #f8eee1;
-    --project-highlight-200: #f0dbc1;
-    --project-highlight-300: #e5c299;
-    --project-highlight-400: #daa870;
-    --project-highlight-500: #ce9b64;
-    --project-highlight-600: #b87843;
-    --project-highlight-700: #995d36;
-    --project-highlight-800: #7d4c31;
-    --project-highlight-900: #663f2b;
-    --project-highlight-950: #372016;
+    --project-highlight-50: #fdf8f2;
+    --project-highlight-100: #f9eddc;
+    --project-highlight-200: #f2d8b8;
+    --project-highlight-300: #e8bf90;
+    --project-highlight-400: #dda770;
+    --project-highlight-500: #d39e65;
+    --project-highlight-600: #bf7f45;
+    --project-highlight-700: #9d6038;
+    --project-highlight-800: #814d34;
+    --project-highlight-900: #68402e;
+    --project-highlight-950: #382117;
 
 
     /*
     |--------------------------------------------------------------------------
     | Neutral Palette: Foam
     |--------------------------------------------------------------------------
+    |
+    | Warm off-whites and muted neutrals inspired by the sea foam.
+    |
+    | Pure white is intentionally used sparingly. These slightly warm values
+    | prevent the product from feeling like a generic blue SaaS dashboard.
+    |
     */
 
-    --project-neutral-50: #fdfdfb;
-    --project-neutral-100: #f8f7f2;
-    --project-neutral-200: #efede5;
-    --project-neutral-300: #e3e0d6;
-    --project-neutral-400: #ccc7b9;
-    --project-neutral-500: #b4ae9e;
-    --project-neutral-600: #989182;
-    --project-neutral-700: #7c7569;
-    --project-neutral-800: #666057;
-    --project-neutral-900: #555049;
-    --project-neutral-950: #2c2926;
+    --project-neutral-50: #fffefa;
+    --project-neutral-100: #faf7f0;
+    --project-neutral-200: #eee8dd;
+    --project-neutral-300: #e0d9ce;
+    --project-neutral-400: #c9c1b5;
+    --project-neutral-500: #ada79d;
+    --project-neutral-600: #8c867d;
+    --project-neutral-700: #6f6a63;
+    --project-neutral-800: #59554f;
+    --project-neutral-900: #48443f;
+    --project-neutral-950: #292724;
 
 
     /*
@@ -140,38 +192,74 @@
     | RevenueFlow Product Semantic Tokens
     |--------------------------------------------------------------------------
     |
-    | These are useful when building RevenueFlow-specific UI directly.
+    | These provide the default surfaces used throughout RevenueFlow.
     |
-    | main.css exposes them as utilities such as:
+    | Rather than using plain white everywhere:
     |
-    |   bg-surface
-    |   bg-surface-soft
-    |   bg-surface-cool
-    |   text-ink
-    |   text-ink-muted
-    |   border-border-strong
+    |   Surface       → Foam
+    |   Soft surface  → Warm foam
+    |   Cool surface  → Sky
     |
     */
 
-    --project-surface: #ffffff;
-    --project-surface-soft: #f8f7f2;
-    --project-surface-cool: #f5fbfd;
+    --project-surface: #fffefa;
 
-    --project-border: #e3e0d6;
-    --project-border-strong: #ccc7b9;
+    --project-surface-soft:
+        color-mix(in srgb,
+            var(--project-neutral-100) 82%,
+            var(--project-highlight-50) 18%);
 
-    --project-ink: #172e34;
-    --project-ink-muted: #666f70;
-    --project-ink-soft: #8b9292;
+    --project-surface-cool:
+        color-mix(in srgb,
+            var(--project-cool-50) 75%,
+            var(--project-neutral-50) 25%);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Borders
+    |--------------------------------------------------------------------------
+    |
+    | A tiny amount of sky is mixed into the foam neutral. This keeps borders
+    | from feeling muddy while remaining considerably softer than slate.
+    |
+    */
+
+    --project-border:
+        color-mix(in srgb,
+            var(--project-neutral-300) 78%,
+            var(--project-cool-100) 22%);
+
+    --project-border-strong:
+        color-mix(in srgb,
+            var(--project-neutral-400) 75%,
+            var(--project-cool-200) 25%);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Text
+    |--------------------------------------------------------------------------
+    |
+    | The darkest ocean tone replaces generic black/slate for primary text.
+    |
+    */
+
+    --project-ink: var(--project-brand-950);
+    --project-ink-muted: #626f70;
+    --project-ink-soft: #879292;
 
 
     /*
     |--------------------------------------------------------------------------
     | shadcn: Page
     |--------------------------------------------------------------------------
+    |
+    | The page starts from a warm foam color rather than clinical white.
+    |
     */
 
-    --background: var(--project-surface);
+    --background: var(--project-neutral-50);
     --foreground: var(--project-ink);
 
 
@@ -179,9 +267,13 @@
     |--------------------------------------------------------------------------
     | shadcn: Cards
     |--------------------------------------------------------------------------
+    |
+    | Cards are slightly cleaner than the page background, mimicking bright
+    | sea foam sitting above the warmer underlying surface.
+    |
     */
 
-    --card: var(--project-surface);
+    --card: #ffffff;
     --card-foreground: var(--project-ink);
 
 
@@ -191,7 +283,7 @@
     |--------------------------------------------------------------------------
     */
 
-    --popover: var(--project-surface);
+    --popover: #ffffff;
     --popover-foreground: var(--project-ink);
 
 
@@ -200,12 +292,13 @@
     | shadcn: Primary Actions
     |--------------------------------------------------------------------------
     |
-    | Primary buttons and important actions use the deep-ocean palette.
+    | Strong deep-ocean primary.
     |
-    | Button's default variant:
+    | Examples:
     |
-    |   bg-primary
-    |   text-primary-foreground
+    |   Primary button
+    |   Important CTA
+    |   Selected high-priority action
     |
     */
 
@@ -218,13 +311,15 @@
     | shadcn: Secondary Actions
     |--------------------------------------------------------------------------
     |
-    | Secondary buttons intentionally use a quiet neutral surface so they
-    | remain visually subordinate to primary actions.
+    | Secondary actions use sand rather than another shade of blue.
+    |
+    | This is one of the key changes that makes the complete interface feel
+    | like the beach palette instead of merely an ocean-themed dashboard.
     |
     */
 
-    --secondary: var(--project-neutral-100);
-    --secondary-foreground: var(--project-brand-950);
+    --secondary: var(--project-highlight-100);
+    --secondary-foreground: var(--project-highlight-900);
 
 
     /*
@@ -232,44 +327,56 @@
     | shadcn: Muted Surfaces
     |--------------------------------------------------------------------------
     |
-    | Used for low-emphasis areas, muted text and supporting UI.
+    | Pale sky provides the cool supporting surface.
+    |
+    | Useful for:
+    |
+    |   - Empty states
+    |   - Supporting panels
+    |   - Table headings
+    |   - Dashboard sections
     |
     */
 
-    --muted: var(--project-neutral-100);
+    --muted:
+        color-mix(in srgb,
+            var(--project-cool-100) 58%,
+            var(--project-neutral-100) 42%);
+
     --muted-foreground: var(--project-ink-muted);
 
 
     /*
     |--------------------------------------------------------------------------
-    | shadcn: Accent State
+    | shadcn: Accent / Interactive State
     |--------------------------------------------------------------------------
     |
-    | Do not confuse this with the RevenueFlow accent palette.
+    | IMPORTANT:
     |
-    | shadcn uses `accent` primarily for:
+    | shadcn uses this token for interactive surfaces including:
     |
-    |   dropdown hover states
-    |   command menu selections
-    |   navigation states
-    |   subtle interactive surfaces
+    |   - Dropdown hover
+    |   - Command selection
+    |   - Navigation hover
+    |   - Menu selection
     |
-    | Use bg-accent-500 when you explicitly want RevenueFlow's shallow-ocean
-    | product accent.
+    | This deliberately uses shallow-water teal rather than brand-50.
+    |
+    | The previous extremely pale hover is therefore replaced by a much more
+    | visible turquoise state.
     |
     */
 
-    --accent: var(--project-accent-100);
-    --accent-foreground: var(--project-accent-900);
+    --accent: var(--project-accent-200);
+    --accent-foreground: var(--project-brand-950);
 
 
     /*
     |--------------------------------------------------------------------------
-    | shadcn: Destructive Actions
+    | shadcn: Destructive
     |--------------------------------------------------------------------------
     |
-    | Destructive colors remain independent of the RevenueFlow brand because
-    | danger/error states should retain familiar visual semantics.
+    | Error/destructive colors remain independent from the beach palette.
     |
     */
 
@@ -284,7 +391,12 @@
     */
 
     --border: var(--project-border);
-    --input: var(--project-border);
+
+    --input:
+        color-mix(in srgb,
+            var(--project-neutral-300) 80%,
+            var(--project-cool-100) 20%);
+
     --ring: var(--project-brand-500);
 
 
@@ -293,12 +405,13 @@
     | shadcn: Charts
     |--------------------------------------------------------------------------
     |
-    | Charts draw from the RevenueFlow palette so dashboard visualizations
-    | remain visually consistent with the rest of the Lab.
+    | The complete beach palette is intentionally represented here.
+    |
+    | Ocean → Turquoise → Sky → Sand → Light ocean
     |
     */
 
-    --chart-1: var(--project-brand-500);
+    --chart-1: var(--project-brand-600);
     --chart-2: var(--project-accent-500);
     --chart-3: var(--project-cool-500);
     --chart-4: var(--project-highlight-500);
@@ -309,18 +422,47 @@
     |--------------------------------------------------------------------------
     | shadcn: Sidebar
     |--------------------------------------------------------------------------
+    |
+    | Sidebar structure:
+    |
+    |   Background → warm foam
+    |   Text       → deep ocean
+    |   Primary    → deep ocean
+    |   Hover      → shallow turquoise water
+    |   Border     → foam + sky
+    |
+    | The important change here is sidebar-accent.
+    |
+    | Previously:
+    |
+    |   brand-50
+    |
+    | Now:
+    |
+    |   accent-200
+    |
+    | This provides an obvious hover/selected state without becoming loud.
+    |
     */
 
-    --sidebar: var(--project-surface-soft);
-    --sidebar-foreground: var(--project-ink);
+    --sidebar:
+        color-mix(in srgb,
+            var(--project-neutral-100) 84%,
+            var(--project-cool-100) 16%);
+
+    --sidebar-foreground: var(--project-brand-950);
 
     --sidebar-primary: var(--project-brand-700);
     --sidebar-primary-foreground: var(--project-neutral-50);
 
-    --sidebar-accent: var(--project-brand-50);
-    --sidebar-accent-foreground: var(--project-brand-900);
+    --sidebar-accent: var(--project-accent-200);
+    --sidebar-accent-foreground: var(--project-brand-950);
 
-    --sidebar-border: var(--project-border);
+    --sidebar-border:
+        color-mix(in srgb,
+            var(--project-neutral-300) 72%,
+            var(--project-cool-200) 28%);
+
     --sidebar-ring: var(--project-brand-500);
 }
 
@@ -330,18 +472,11 @@
 | RevenueFlow Dark Theme
 |--------------------------------------------------------------------------
 |
-| Applied when `.revenueflow-theme` exists beneath an ancestor with `.dark`.
+| Dark mode represents the same beach palette after sunset rather than
+| switching to generic charcoal/slate.
 |
-| Example:
-|
-|   <html class="dark">
-|       <div class="revenueflow-theme">
-|           ...
-|       </div>
-|   </html>
-|
-| The base RevenueFlow palettes remain unchanged. Only their semantic roles
-| are remapped for dark mode.
+| Deep ocean remains dominant, while turquoise, sky and sand continue to
+| provide accents.
 |
 */
 
@@ -351,19 +486,46 @@
     |--------------------------------------------------------------------------
     | Product Surfaces
     |--------------------------------------------------------------------------
-    |
-    | Override the unnumbered RevenueFlow surface/ink tokens as well as the
-    | shadcn tokens so custom RevenueFlow UI and shadcn components remain
-    | visually consistent.
-    |
     */
 
-    --project-surface: var(--project-neutral-950);
-    --project-surface-soft: var(--project-neutral-900);
-    --project-surface-cool: var(--project-brand-950);
+    --project-surface:
+        color-mix(in srgb,
+            var(--project-brand-950) 72%,
+            var(--project-neutral-950) 28%);
 
-    --project-border: var(--project-neutral-800);
-    --project-border-strong: var(--project-neutral-700);
+    --project-surface-soft:
+        color-mix(in srgb,
+            var(--project-brand-950) 52%,
+            var(--project-neutral-900) 48%);
+
+    --project-surface-cool:
+        color-mix(in srgb,
+            var(--project-brand-900) 72%,
+            var(--project-cool-950) 28%);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Borders
+    |--------------------------------------------------------------------------
+    */
+
+    --project-border:
+        color-mix(in srgb,
+            var(--project-brand-800) 58%,
+            var(--project-neutral-800) 42%);
+
+    --project-border-strong:
+        color-mix(in srgb,
+            var(--project-brand-700) 52%,
+            var(--project-neutral-700) 48%);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Text
+    |--------------------------------------------------------------------------
+    */
 
     --project-ink: var(--project-neutral-50);
     --project-ink-muted: var(--project-neutral-400);
@@ -376,7 +538,11 @@
     |--------------------------------------------------------------------------
     */
 
-    --background: var(--project-neutral-950);
+    --background:
+        color-mix(in srgb,
+            var(--project-brand-950) 74%,
+            var(--project-neutral-950) 26%);
+
     --foreground: var(--project-neutral-50);
 
 
@@ -386,7 +552,11 @@
     |--------------------------------------------------------------------------
     */
 
-    --card: var(--project-neutral-900);
+    --card:
+        color-mix(in srgb,
+            var(--project-brand-950) 48%,
+            var(--project-neutral-900) 52%);
+
     --card-foreground: var(--project-neutral-50);
 
 
@@ -396,7 +566,11 @@
     |--------------------------------------------------------------------------
     */
 
-    --popover: var(--project-neutral-900);
+    --popover:
+        color-mix(in srgb,
+            var(--project-brand-950) 44%,
+            var(--project-neutral-900) 56%);
+
     --popover-foreground: var(--project-neutral-50);
 
 
@@ -404,6 +578,9 @@
     |--------------------------------------------------------------------------
     | shadcn: Primary Actions
     |--------------------------------------------------------------------------
+    |
+    | A lighter ocean tone is required against the dark background.
+    |
     */
 
     --primary: var(--project-brand-400);
@@ -414,10 +591,17 @@
     |--------------------------------------------------------------------------
     | shadcn: Secondary Actions
     |--------------------------------------------------------------------------
+    |
+    | Sand remains visible in dark mode without becoming overly saturated.
+    |
     */
 
-    --secondary: var(--project-neutral-800);
-    --secondary-foreground: var(--project-neutral-50);
+    --secondary:
+        color-mix(in srgb,
+            var(--project-highlight-900) 65%,
+            var(--project-neutral-900) 35%);
+
+    --secondary-foreground: var(--project-highlight-100);
 
 
     /*
@@ -426,23 +610,31 @@
     |--------------------------------------------------------------------------
     */
 
-    --muted: var(--project-neutral-800);
+    --muted:
+        color-mix(in srgb,
+            var(--project-cool-950) 42%,
+            var(--project-neutral-900) 58%);
+
     --muted-foreground: var(--project-neutral-400);
 
 
     /*
     |--------------------------------------------------------------------------
-    | shadcn: Accent State
+    | shadcn: Accent / Interactive State
     |--------------------------------------------------------------------------
+    |
+    | Dark turquoise gives hover and selected states a visible separation
+    | from the surrounding dark-ocean surfaces.
+    |
     */
 
-    --accent: var(--project-accent-900);
+    --accent: var(--project-accent-800);
     --accent-foreground: var(--project-accent-100);
 
 
     /*
     |--------------------------------------------------------------------------
-    | shadcn: Destructive Actions
+    | shadcn: Destructive
     |--------------------------------------------------------------------------
     */
 
@@ -456,8 +648,8 @@
     |--------------------------------------------------------------------------
     */
 
-    --border: var(--project-neutral-800);
-    --input: var(--project-neutral-800);
+    --border: var(--project-border);
+    --input: var(--project-border-strong);
     --ring: var(--project-brand-400);
 
 
@@ -478,17 +670,87 @@
     |--------------------------------------------------------------------------
     | shadcn: Sidebar
     |--------------------------------------------------------------------------
+    |
+    | Dark ocean sidebar with a clearly visible turquoise hover.
+    |
     */
 
-    --sidebar: var(--project-neutral-900);
+    --sidebar:
+        color-mix(in srgb,
+            var(--project-brand-950) 56%,
+            var(--project-neutral-900) 44%);
+
     --sidebar-foreground: var(--project-neutral-50);
 
     --sidebar-primary: var(--project-brand-400);
     --sidebar-primary-foreground: var(--project-brand-950);
 
-    --sidebar-accent: var(--project-neutral-800);
-    --sidebar-accent-foreground: var(--project-neutral-50);
+    --sidebar-accent: var(--project-accent-800);
+    --sidebar-accent-foreground: var(--project-accent-100);
 
-    --sidebar-border: var(--project-neutral-800);
+    --sidebar-border:
+        color-mix(in srgb,
+            var(--project-brand-800) 56%,
+            var(--project-neutral-800) 44%);
+
     --sidebar-ring: var(--project-brand-400);
+}
+
+@keyframes revenueflow-sonar {
+    0% {
+        transform: scale(0.85);
+        opacity: 0;
+    }
+
+    12% {
+        opacity: 0.5;
+    }
+
+    70% {
+        opacity: 0.12;
+    }
+
+    100% {
+        transform: scale(4.5);
+        opacity: 0;
+    }
+}
+
+@keyframes revenueflow-beacon {
+    0% {
+        transform: scale(0.7);
+        opacity: 0.08;
+        box-shadow:
+            0 0 2px var(--project-accent-300),
+            0 0 6px var(--project-accent-200);
+    }
+
+    50% {
+        transform: scale(1.3);
+        opacity: 1;
+        box-shadow:
+            0 0 10px var(--project-accent-300),
+            0 0 20px var(--project-accent-200),
+            0 0 34px var(--project-accent-100);
+    }
+
+    100% {
+        transform: scale(0.7);
+        opacity: 0.08;
+        box-shadow:
+            0 0 2px var(--project-accent-300),
+            0 0 6px var(--project-accent-200);
+    }
+}
+
+.revenueflow-beacon {
+    animation: revenueflow-beacon 4s ease-in-out infinite;
+    transform-origin: center;
+    will-change: transform, opacity, box-shadow;
+}
+
+.revenueflow-sonar {
+    animation: revenueflow-sonar 4s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    transform-origin: center;
+    will-change: transform, opacity;
 }
