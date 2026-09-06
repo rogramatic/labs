@@ -6,10 +6,19 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
 
+  modules: [
+    'shadcn-nuxt',
+  ],
+
   vite: {
     plugins: [
       tailwindcss()
     ]
+  },
+
+  shadcn: {
+    prefix: '',
+    componentDir: '@/components/ui',
   },
 
   runtimeConfig: {
@@ -23,5 +32,5 @@ export default defineNuxtConfig({
     }
   },
 
-  modules: ['@nuxt/image'],
+  modules: ['@nuxt/image', 'shadcn-nuxt'],
 })

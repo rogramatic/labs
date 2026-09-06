@@ -1,23 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
 @import "tailwindcss";
+@import "tw-animate-css";
 
 /*
 |--------------------------------------------------------------------------
-| Shared Lab Design Tokens
+| Dark Mode
 |--------------------------------------------------------------------------
 |
-| These are the semantic Tailwind utilities available to every Lab.
-| The actual values are supplied by the active product theme.
+| Enables Tailwind's `dark:` variant when a `.dark` class exists on an
+| ancestor, normally the <html> element.
 |
-| Example:
+*/
+
+@custom-variant dark (&:is(.dark *));
+
+
+/*
+|--------------------------------------------------------------------------
+| Shared Rogramatic Lab Design Tokens
+|--------------------------------------------------------------------------
 |
-| bg-brand-500
-| text-brand-950
-| bg-accent-500
-| bg-highlight-50
-| text-ink
-| text-ink-muted
-| bg-surface
-| border-border
+| This file defines the shared Tailwind utility API used by every Lab.
+|
+| It DOES NOT define the actual product palette.
+|
+| Product-specific stylesheets such as:
+|
+|   revenueflow.css
+|   resolve.css
+|   settle.css
+|
+| are responsible for defining:
+|
+|   --project-brand-*
+|   --project-accent-*
+|   --project-cool-*
+|   --project-highlight-*
+|   --project-neutral-*
+|
+| as well as semantic shadcn variables such as:
+|
+|   --background
+|   --foreground
+|   --primary
+|   --secondary
+|   --muted
+|   --accent
+|   --border
+|
+| This lets shared components use utilities such as:
+|
+|   bg-brand-500
+|   text-brand-950
+|   bg-primary
+|   text-primary-foreground
+|   bg-secondary
+|   bg-card
+|   text-muted-foreground
+|   border-border
+|
+| without knowing which Lab is currently active.
 |
 */
 
@@ -25,7 +68,17 @@
 
     /*
     |--------------------------------------------------------------------------
-    | Primary Brand
+    | Typography
+    |--------------------------------------------------------------------------
+    */
+
+    --font-sans: "Inter", sans-serif;
+    --font-heading: "Inter", sans-serif;
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Primary Brand Palette
     |--------------------------------------------------------------------------
     */
 
@@ -44,8 +97,17 @@
 
     /*
     |--------------------------------------------------------------------------
-    | Secondary / Accent
+    | Product Accent Palette
     |--------------------------------------------------------------------------
+    |
+    | Numbered accent utilities represent the actual product accent:
+    |
+    |   bg-accent-500
+    |   text-accent-700
+    |
+    | The unnumbered `accent` token further below belongs to shadcn's
+    | semantic system.
+    |
     */
 
     --color-accent-50: var(--project-accent-50);
@@ -63,7 +125,7 @@
 
     /*
     |--------------------------------------------------------------------------
-    | Cool Supporting Color
+    | Cool Supporting Palette
     |--------------------------------------------------------------------------
     */
 
@@ -82,7 +144,7 @@
 
     /*
     |--------------------------------------------------------------------------
-    | Warm Highlight
+    | Warm Highlight Palette
     |--------------------------------------------------------------------------
     */
 
@@ -101,7 +163,7 @@
 
     /*
     |--------------------------------------------------------------------------
-    | Neutral
+    | Neutral Palette
     |--------------------------------------------------------------------------
     */
 
@@ -120,15 +182,27 @@
 
     /*
     |--------------------------------------------------------------------------
-    | Semantic Colors
+    | Lab Semantic Utilities
     |--------------------------------------------------------------------------
+    |
+    | These utilities expose commonly used product-level concepts without
+    | tying shared UI to a particular Lab's palette.
+    |
+    | Examples:
+    |
+    |   bg-brand
+    |   hover:bg-brand-hover
+    |   bg-surface
+    |   bg-surface-soft
+    |   text-ink
+    |   text-ink-muted
+    |
     */
 
     --color-brand: var(--project-brand-500);
     --color-brand-hover: var(--project-brand-600);
     --color-brand-dark: var(--project-brand-900);
 
-    --color-accent: var(--project-accent-500);
     --color-accent-hover: var(--project-accent-600);
 
     --color-highlight: var(--project-highlight-500);
@@ -137,10 +211,429 @@
     --color-surface-soft: var(--project-surface-soft);
     --color-surface-cool: var(--project-surface-cool);
 
-    --color-border: var(--project-border);
     --color-border-strong: var(--project-border-strong);
 
     --color-ink: var(--project-ink);
     --color-ink-muted: var(--project-ink-muted);
     --color-ink-soft: var(--project-ink-soft);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | shadcn-vue Semantic Colors
+    |--------------------------------------------------------------------------
+    |
+    | These map Tailwind utilities to shadcn's semantic variables.
+    |
+    | IMPORTANT:
+    |
+    | The variables on the right-hand side are intentionally NOT connected
+    | directly to --project-* values here.
+    |
+    | Each active Lab theme defines these variables itself.
+    |
+    | For example, RevenueFlow can define:
+    |
+    |   --primary: var(--project-brand-700);
+    |   --secondary: var(--project-neutral-100);
+    |
+    | while another Lab can use completely different mappings.
+    |
+    */
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Charts
+    |--------------------------------------------------------------------------
+    */
+
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Sidebar
+    |--------------------------------------------------------------------------
+    */
+
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Border Radius
+    |--------------------------------------------------------------------------
+    */
+
+    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) + 4px);
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Global Defaults
+|--------------------------------------------------------------------------
+|
+| These are deliberately product-neutral.
+|
+| They provide safe defaults for pages that are not inside a Lab theme,
+| including the root Rogramatic application and shadcn components rendered
+| outside a product wrapper.
+|
+| Active Lab themes override these values on their own wrapper element.
+|
+*/
+
+:root {
+
+    /*
+    |--------------------------------------------------------------------------
+    | Radius
+    |--------------------------------------------------------------------------
+    */
+
+    --radius: 0.625rem;
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Page
+    |--------------------------------------------------------------------------
+    */
+
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.145 0 0);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Cards
+    |--------------------------------------------------------------------------
+    */
+
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.145 0 0);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Popovers
+    |--------------------------------------------------------------------------
+    */
+
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.145 0 0);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Primary Actions
+    |--------------------------------------------------------------------------
+    */
+
+    --primary: oklch(0.205 0 0);
+    --primary-foreground: oklch(0.985 0 0);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Secondary Actions
+    |--------------------------------------------------------------------------
+    */
+
+    --secondary: oklch(0.97 0 0);
+    --secondary-foreground: oklch(0.205 0 0);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Muted
+    |--------------------------------------------------------------------------
+    */
+
+    --muted: oklch(0.97 0 0);
+    --muted-foreground: oklch(0.556 0 0);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Accent
+    |--------------------------------------------------------------------------
+    */
+
+    --accent: oklch(0.97 0 0);
+    --accent-foreground: oklch(0.205 0 0);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Destructive
+    |--------------------------------------------------------------------------
+    */
+
+    --destructive: oklch(0.577 0.245 27.325);
+    --destructive-foreground: oklch(0.985 0 0);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Forms / Focus / Borders
+    |--------------------------------------------------------------------------
+    */
+
+    --border: oklch(0.922 0 0);
+    --input: oklch(0.922 0 0);
+    --ring: oklch(0.708 0 0);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Charts
+    |--------------------------------------------------------------------------
+    */
+
+    --chart-1: oklch(0.646 0.222 41.116);
+    --chart-2: oklch(0.6 0.118 184.704);
+    --chart-3: oklch(0.398 0.07 227.392);
+    --chart-4: oklch(0.828 0.189 84.429);
+    --chart-5: oklch(0.769 0.188 70.08);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Sidebar
+    |--------------------------------------------------------------------------
+    */
+
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.145 0 0);
+
+    --sidebar-primary: oklch(0.205 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+
+    --sidebar-accent: oklch(0.97 0 0);
+    --sidebar-accent-foreground: oklch(0.205 0 0);
+
+    --sidebar-border: oklch(0.922 0 0);
+    --sidebar-ring: oklch(0.708 0 0);
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Global Dark Defaults
+|--------------------------------------------------------------------------
+|
+| These are neutral fallback values only.
+|
+| Product themes should provide their own dark semantic mappings when
+| necessary so that their visual identity is preserved.
+|
+*/
+
+.dark {
+
+    /*
+    |--------------------------------------------------------------------------
+    | Page
+    |--------------------------------------------------------------------------
+    */
+
+    --background: oklch(0.145 0 0);
+    --foreground: oklch(0.985 0 0);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Cards
+    |--------------------------------------------------------------------------
+    */
+
+    --card: oklch(0.205 0 0);
+    --card-foreground: oklch(0.985 0 0);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Popovers
+    |--------------------------------------------------------------------------
+    */
+
+    --popover: oklch(0.205 0 0);
+    --popover-foreground: oklch(0.985 0 0);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Primary Actions
+    |--------------------------------------------------------------------------
+    */
+
+    --primary: oklch(0.922 0 0);
+    --primary-foreground: oklch(0.205 0 0);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Secondary Actions
+    |--------------------------------------------------------------------------
+    */
+
+    --secondary: oklch(0.269 0 0);
+    --secondary-foreground: oklch(0.985 0 0);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Muted
+    |--------------------------------------------------------------------------
+    */
+
+    --muted: oklch(0.269 0 0);
+    --muted-foreground: oklch(0.708 0 0);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Accent
+    |--------------------------------------------------------------------------
+    */
+
+    --accent: oklch(0.269 0 0);
+    --accent-foreground: oklch(0.985 0 0);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Destructive
+    |--------------------------------------------------------------------------
+    */
+
+    --destructive: oklch(0.704 0.191 22.216);
+    --destructive-foreground: oklch(0.985 0 0);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Forms / Focus / Borders
+    |--------------------------------------------------------------------------
+    */
+
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 15%);
+    --ring: oklch(0.556 0 0);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Charts
+    |--------------------------------------------------------------------------
+    */
+
+    --chart-1: oklch(0.488 0.243 264.376);
+    --chart-2: oklch(0.696 0.17 162.48);
+    --chart-3: oklch(0.769 0.188 70.08);
+    --chart-4: oklch(0.627 0.265 303.9);
+    --chart-5: oklch(0.645 0.246 16.439);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Sidebar
+    |--------------------------------------------------------------------------
+    */
+
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+
+    --sidebar-primary: oklch(0.488 0.243 264.376);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: oklch(0.556 0 0);
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Base Styles
+|--------------------------------------------------------------------------
+*/
+
+@layer base {
+
+    * {
+        @apply border-border outline-ring/50;
+    }
+
+    html {
+        @apply scroll-smooth;
+    }
+
+    body {
+        @apply min-h-screen bg-background font-sans text-foreground antialiased;
+    }
+
+    button,
+    a {
+        cursor: pointer;
+    }
+
+    button:disabled {
+        cursor: not-allowed;
+    }
+
+    ::selection {
+        background-color: var(--primary);
+        color: var(--primary-foreground);
+    }
 }

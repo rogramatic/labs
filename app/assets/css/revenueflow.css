@@ -3,6 +3,8 @@
 | RevenueFlow Theme
 |--------------------------------------------------------------------------
 |
+| Product-specific design system for the RevenueFlow Lab.
+|
 | Inspired by the beach image:
 |
 | Brand     → Deep ocean
@@ -11,13 +13,36 @@
 | Highlight → Sand
 | Neutral   → Wave / foam
 |
+| main.css exposes these variables as Tailwind utilities.
+|
+| Examples:
+|
+|   bg-brand-500
+|   text-brand-900
+|   bg-accent-500
+|   bg-highlight-100
+|   bg-surface
+|   text-ink
+|
+| This file also defines RevenueFlow's shadcn semantic colors:
+|
+|   bg-primary
+|   bg-secondary
+|   bg-background
+|   bg-card
+|   bg-muted
+|   bg-accent
+|   text-foreground
+|   text-muted-foreground
+|   border-border
+|
 */
 
 .revenueflow-theme {
 
     /*
     |--------------------------------------------------------------------------
-    | Primary: Deep Ocean
+    | Primary Palette: Deep Ocean
     |--------------------------------------------------------------------------
     */
 
@@ -36,7 +61,7 @@
 
     /*
     |--------------------------------------------------------------------------
-    | Secondary: Shallow Ocean
+    | Accent Palette: Shallow Ocean
     |--------------------------------------------------------------------------
     */
 
@@ -55,7 +80,7 @@
 
     /*
     |--------------------------------------------------------------------------
-    | Cool Supporting Color: Sky
+    | Cool Supporting Palette: Sky
     |--------------------------------------------------------------------------
     */
 
@@ -74,7 +99,7 @@
 
     /*
     |--------------------------------------------------------------------------
-    | Warm Highlight: Sand
+    | Highlight Palette: Sand
     |--------------------------------------------------------------------------
     */
 
@@ -93,7 +118,7 @@
 
     /*
     |--------------------------------------------------------------------------
-    | Neutral: Foam
+    | Neutral Palette: Foam
     |--------------------------------------------------------------------------
     */
 
@@ -112,8 +137,20 @@
 
     /*
     |--------------------------------------------------------------------------
-    | Semantic Tokens
+    | RevenueFlow Product Semantic Tokens
     |--------------------------------------------------------------------------
+    |
+    | These are useful when building RevenueFlow-specific UI directly.
+    |
+    | main.css exposes them as utilities such as:
+    |
+    |   bg-surface
+    |   bg-surface-soft
+    |   bg-surface-cool
+    |   text-ink
+    |   text-ink-muted
+    |   border-border-strong
+    |
     */
 
     --project-surface: #ffffff;
@@ -126,4 +163,332 @@
     --project-ink: #172e34;
     --project-ink-muted: #666f70;
     --project-ink-soft: #8b9292;
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | shadcn: Page
+    |--------------------------------------------------------------------------
+    */
+
+    --background: var(--project-surface);
+    --foreground: var(--project-ink);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | shadcn: Cards
+    |--------------------------------------------------------------------------
+    */
+
+    --card: var(--project-surface);
+    --card-foreground: var(--project-ink);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | shadcn: Popovers
+    |--------------------------------------------------------------------------
+    */
+
+    --popover: var(--project-surface);
+    --popover-foreground: var(--project-ink);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | shadcn: Primary Actions
+    |--------------------------------------------------------------------------
+    |
+    | Primary buttons and important actions use the deep-ocean palette.
+    |
+    | Button's default variant:
+    |
+    |   bg-primary
+    |   text-primary-foreground
+    |
+    */
+
+    --primary: var(--project-brand-700);
+    --primary-foreground: var(--project-neutral-50);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | shadcn: Secondary Actions
+    |--------------------------------------------------------------------------
+    |
+    | Secondary buttons intentionally use a quiet neutral surface so they
+    | remain visually subordinate to primary actions.
+    |
+    */
+
+    --secondary: var(--project-neutral-100);
+    --secondary-foreground: var(--project-brand-950);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | shadcn: Muted Surfaces
+    |--------------------------------------------------------------------------
+    |
+    | Used for low-emphasis areas, muted text and supporting UI.
+    |
+    */
+
+    --muted: var(--project-neutral-100);
+    --muted-foreground: var(--project-ink-muted);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | shadcn: Accent State
+    |--------------------------------------------------------------------------
+    |
+    | Do not confuse this with the RevenueFlow accent palette.
+    |
+    | shadcn uses `accent` primarily for:
+    |
+    |   dropdown hover states
+    |   command menu selections
+    |   navigation states
+    |   subtle interactive surfaces
+    |
+    | Use bg-accent-500 when you explicitly want RevenueFlow's shallow-ocean
+    | product accent.
+    |
+    */
+
+    --accent: var(--project-accent-100);
+    --accent-foreground: var(--project-accent-900);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | shadcn: Destructive Actions
+    |--------------------------------------------------------------------------
+    |
+    | Destructive colors remain independent of the RevenueFlow brand because
+    | danger/error states should retain familiar visual semantics.
+    |
+    */
+
+    --destructive: oklch(0.577 0.245 27.325);
+    --destructive-foreground: #ffffff;
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | shadcn: Forms, Borders and Focus
+    |--------------------------------------------------------------------------
+    */
+
+    --border: var(--project-border);
+    --input: var(--project-border);
+    --ring: var(--project-brand-500);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | shadcn: Charts
+    |--------------------------------------------------------------------------
+    |
+    | Charts draw from the RevenueFlow palette so dashboard visualizations
+    | remain visually consistent with the rest of the Lab.
+    |
+    */
+
+    --chart-1: var(--project-brand-500);
+    --chart-2: var(--project-accent-500);
+    --chart-3: var(--project-cool-500);
+    --chart-4: var(--project-highlight-500);
+    --chart-5: var(--project-brand-300);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | shadcn: Sidebar
+    |--------------------------------------------------------------------------
+    */
+
+    --sidebar: var(--project-surface-soft);
+    --sidebar-foreground: var(--project-ink);
+
+    --sidebar-primary: var(--project-brand-700);
+    --sidebar-primary-foreground: var(--project-neutral-50);
+
+    --sidebar-accent: var(--project-brand-50);
+    --sidebar-accent-foreground: var(--project-brand-900);
+
+    --sidebar-border: var(--project-border);
+    --sidebar-ring: var(--project-brand-500);
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| RevenueFlow Dark Theme
+|--------------------------------------------------------------------------
+|
+| Applied when `.revenueflow-theme` exists beneath an ancestor with `.dark`.
+|
+| Example:
+|
+|   <html class="dark">
+|       <div class="revenueflow-theme">
+|           ...
+|       </div>
+|   </html>
+|
+| The base RevenueFlow palettes remain unchanged. Only their semantic roles
+| are remapped for dark mode.
+|
+*/
+
+.dark .revenueflow-theme {
+
+    /*
+    |--------------------------------------------------------------------------
+    | Product Surfaces
+    |--------------------------------------------------------------------------
+    |
+    | Override the unnumbered RevenueFlow surface/ink tokens as well as the
+    | shadcn tokens so custom RevenueFlow UI and shadcn components remain
+    | visually consistent.
+    |
+    */
+
+    --project-surface: var(--project-neutral-950);
+    --project-surface-soft: var(--project-neutral-900);
+    --project-surface-cool: var(--project-brand-950);
+
+    --project-border: var(--project-neutral-800);
+    --project-border-strong: var(--project-neutral-700);
+
+    --project-ink: var(--project-neutral-50);
+    --project-ink-muted: var(--project-neutral-400);
+    --project-ink-soft: var(--project-neutral-500);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | shadcn: Page
+    |--------------------------------------------------------------------------
+    */
+
+    --background: var(--project-neutral-950);
+    --foreground: var(--project-neutral-50);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | shadcn: Cards
+    |--------------------------------------------------------------------------
+    */
+
+    --card: var(--project-neutral-900);
+    --card-foreground: var(--project-neutral-50);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | shadcn: Popovers
+    |--------------------------------------------------------------------------
+    */
+
+    --popover: var(--project-neutral-900);
+    --popover-foreground: var(--project-neutral-50);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | shadcn: Primary Actions
+    |--------------------------------------------------------------------------
+    */
+
+    --primary: var(--project-brand-400);
+    --primary-foreground: var(--project-brand-950);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | shadcn: Secondary Actions
+    |--------------------------------------------------------------------------
+    */
+
+    --secondary: var(--project-neutral-800);
+    --secondary-foreground: var(--project-neutral-50);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | shadcn: Muted Surfaces
+    |--------------------------------------------------------------------------
+    */
+
+    --muted: var(--project-neutral-800);
+    --muted-foreground: var(--project-neutral-400);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | shadcn: Accent State
+    |--------------------------------------------------------------------------
+    */
+
+    --accent: var(--project-accent-900);
+    --accent-foreground: var(--project-accent-100);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | shadcn: Destructive Actions
+    |--------------------------------------------------------------------------
+    */
+
+    --destructive: oklch(0.704 0.191 22.216);
+    --destructive-foreground: var(--project-neutral-50);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | shadcn: Forms, Borders and Focus
+    |--------------------------------------------------------------------------
+    */
+
+    --border: var(--project-neutral-800);
+    --input: var(--project-neutral-800);
+    --ring: var(--project-brand-400);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | shadcn: Charts
+    |--------------------------------------------------------------------------
+    */
+
+    --chart-1: var(--project-brand-400);
+    --chart-2: var(--project-accent-400);
+    --chart-3: var(--project-cool-400);
+    --chart-4: var(--project-highlight-400);
+    --chart-5: var(--project-brand-200);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | shadcn: Sidebar
+    |--------------------------------------------------------------------------
+    */
+
+    --sidebar: var(--project-neutral-900);
+    --sidebar-foreground: var(--project-neutral-50);
+
+    --sidebar-primary: var(--project-brand-400);
+    --sidebar-primary-foreground: var(--project-brand-950);
+
+    --sidebar-accent: var(--project-neutral-800);
+    --sidebar-accent-foreground: var(--project-neutral-50);
+
+    --sidebar-border: var(--project-neutral-800);
+    --sidebar-ring: var(--project-brand-400);
 }

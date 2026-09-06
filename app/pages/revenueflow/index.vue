@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { Button } from '~/components/ui/button';
+
 definePageMeta({
     layout: 'revenueflow'
 })
@@ -25,11 +27,9 @@ useHead({
         RevenueFlow helps you fix the gaps.
       </div>
 
-      <div>
-        <button class="bg-brand text-white hover:bg-brand-hover">
-          View details
-        </button>
-      </div>
+      <Button class="mt-3">
+        Explore the Demo
+      </Button>
     </div>
   </div>
 </template>
