@@ -1,0 +1,129 @@
+/*
+|--------------------------------------------------------------------------
+| RevenueFlow Theme
+|--------------------------------------------------------------------------
+|
+| Inspired by the beach image:
+|
+| Brand     → Deep ocean
+| Accent    → Shallow ocean
+| Cool      → Sky
+| Highlight → Sand
+| Neutral   → Wave / foam
+|
+*/
+
+.revenueflow-theme {
+
+    /*
+    |--------------------------------------------------------------------------
+    | Primary: Deep Ocean
+    |--------------------------------------------------------------------------
+    */
+
+    --project-brand-50: #f2f8f9;
+    --project-brand-100: #dcecef;
+    --project-brand-200: #bddde2;
+    --project-brand-300: #91c7cf;
+    --project-brand-400: #64aeba;
+    --project-brand-500: #458f9d;
+    --project-brand-600: #397684;
+    --project-brand-700: #32616d;
+    --project-brand-800: #2e525b;
+    --project-brand-900: #29464e;
+    --project-brand-950: #172e34;
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Secondary: Shallow Ocean
+    |--------------------------------------------------------------------------
+    */
+
+    --project-accent-50: #f1f9f8;
+    --project-accent-100: #d7efec;
+    --project-accent-200: #b1dfda;
+    --project-accent-300: #80c7c0;
+    --project-accent-400: #58aca6;
+    --project-accent-500: #42938d;
+    --project-accent-600: #367772;
+    --project-accent-700: #30605d;
+    --project-accent-800: #2b4f4d;
+    --project-accent-900: #274342;
+    --project-accent-950: #132726;
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Cool Supporting Color: Sky
+    |--------------------------------------------------------------------------
+    */
+
+    --project-cool-50: #f5fbfd;
+    --project-cool-100: #e8f6fa;
+    --project-cool-200: #d4eef5;
+    --project-cool-300: #b6e1ee;
+    --project-cool-400: #8dcede;
+    --project-cool-500: #68b5ca;
+    --project-cool-600: #4d97ad;
+    --project-cool-700: #407a8d;
+    --project-cool-800: #396675;
+    --project-cool-900: #345662;
+    --project-cool-950: #223840;
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Warm Highlight: Sand
+    |--------------------------------------------------------------------------
+    */
+
+    --project-highlight-50: #fcf8f3;
+    --project-highlight-100: #f8eee1;
+    --project-highlight-200: #f0dbc1;
+    --project-highlight-300: #e5c299;
+    --project-highlight-400: #daa870;
+    --project-highlight-500: #ce9b64;
+    --project-highlight-600: #b87843;
+    --project-highlight-700: #995d36;
+    --project-highlight-800: #7d4c31;
+    --project-highlight-900: #663f2b;
+    --project-highlight-950: #372016;
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Neutral: Foam
+    |--------------------------------------------------------------------------
+    */
+
+    --project-neutral-50: #fdfdfb;
+    --project-neutral-100: #f8f7f2;
+    --project-neutral-200: #efede5;
+    --project-neutral-300: #e3e0d6;
+    --project-neutral-400: #ccc7b9;
+    --project-neutral-500: #b4ae9e;
+    --project-neutral-600: #989182;
+    --project-neutral-700: #7c7569;
+    --project-neutral-800: #666057;
+    --project-neutral-900: #555049;
+    --project-neutral-950: #2c2926;
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Semantic Tokens
+    |--------------------------------------------------------------------------
+    */
+
+    --project-surface: #ffffff;
+    --project-surface-soft: #f8f7f2;
+    --project-surface-cool: #f5fbfd;
+
+    --project-border: #e3e0d6;
+    --project-border-strong: #ccc7b9;
+
+    --project-ink: #172e34;
+    --project-ink-muted: #666f70;
+    --project-ink-soft: #8b9292;
+}

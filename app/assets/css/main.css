@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+/*
+|--------------------------------------------------------------------------
+| Shared Lab Design Tokens
+|--------------------------------------------------------------------------
+|
+| These are the semantic Tailwind utilities available to every Lab.
+| The actual values are supplied by the active product theme.
+|
+| Example:
+|
+| bg-brand-500
+| text-brand-950
+| bg-accent-500
+| bg-highlight-50
+| text-ink
+| text-ink-muted
+| bg-surface
+| border-border
+|
+*/
+
+@theme inline {
+
+    /*
+    |--------------------------------------------------------------------------
+    | Primary Brand
+    |--------------------------------------------------------------------------
+    */
+
+    --color-brand-50: var(--project-brand-50);
+    --color-brand-100: var(--project-brand-100);
+    --color-brand-200: var(--project-brand-200);
+    --color-brand-300: var(--project-brand-300);
+    --color-brand-400: var(--project-brand-400);
+    --color-brand-500: var(--project-brand-500);
+    --color-brand-600: var(--project-brand-600);
+    --color-brand-700: var(--project-brand-700);
+    --color-brand-800: var(--project-brand-800);
+    --color-brand-900: var(--project-brand-900);
+    --color-brand-950: var(--project-brand-950);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Secondary / Accent
+    |--------------------------------------------------------------------------
+    */
+
+    --color-accent-50: var(--project-accent-50);
+    --color-accent-100: var(--project-accent-100);
+    --color-accent-200: var(--project-accent-200);
+    --color-accent-300: var(--project-accent-300);
+    --color-accent-400: var(--project-accent-400);
+    --color-accent-500: var(--project-accent-500);
+    --color-accent-600: var(--project-accent-600);
+    --color-accent-700: var(--project-accent-700);
+    --color-accent-800: var(--project-accent-800);
+    --color-accent-900: var(--project-accent-900);
+    --color-accent-950: var(--project-accent-950);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Cool Supporting Color
+    |--------------------------------------------------------------------------
+    */
+
+    --color-cool-50: var(--project-cool-50);
+    --color-cool-100: var(--project-cool-100);
+    --color-cool-200: var(--project-cool-200);
+    --color-cool-300: var(--project-cool-300);
+    --color-cool-400: var(--project-cool-400);
+    --color-cool-500: var(--project-cool-500);
+    --color-cool-600: var(--project-cool-600);
+    --color-cool-700: var(--project-cool-700);
+    --color-cool-800: var(--project-cool-800);
+    --color-cool-900: var(--project-cool-900);
+    --color-cool-950: var(--project-cool-950);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Warm Highlight
+    |--------------------------------------------------------------------------
+    */
+
+    --color-highlight-50: var(--project-highlight-50);
+    --color-highlight-100: var(--project-highlight-100);
+    --color-highlight-200: var(--project-highlight-200);
+    --color-highlight-300: var(--project-highlight-300);
+    --color-highlight-400: var(--project-highlight-400);
+    --color-highlight-500: var(--project-highlight-500);
+    --color-highlight-600: var(--project-highlight-600);
+    --color-highlight-700: var(--project-highlight-700);
+    --color-highlight-800: var(--project-highlight-800);
+    --color-highlight-900: var(--project-highlight-900);
+    --color-highlight-950: var(--project-highlight-950);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Neutral
+    |--------------------------------------------------------------------------
+    */
+
+    --color-neutral-50: var(--project-neutral-50);
+    --color-neutral-100: var(--project-neutral-100);
+    --color-neutral-200: var(--project-neutral-200);
+    --color-neutral-300: var(--project-neutral-300);
+    --color-neutral-400: var(--project-neutral-400);
+    --color-neutral-500: var(--project-neutral-500);
+    --color-neutral-600: var(--project-neutral-600);
+    --color-neutral-700: var(--project-neutral-700);
+    --color-neutral-800: var(--project-neutral-800);
+    --color-neutral-900: var(--project-neutral-900);
+    --color-neutral-950: var(--project-neutral-950);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Semantic Colors
+    |--------------------------------------------------------------------------
+    */
+
+    --color-brand: var(--project-brand-500);
+    --color-brand-hover: var(--project-brand-600);
+    --color-brand-dark: var(--project-brand-900);
+
+    --color-accent: var(--project-accent-500);
+    --color-accent-hover: var(--project-accent-600);
+
+    --color-highlight: var(--project-highlight-500);
+
+    --color-surface: var(--project-surface);
+    --color-surface-soft: var(--project-surface-soft);
+    --color-surface-cool: var(--project-surface-cool);
+
+    --color-border: var(--project-border);
+    --color-border-strong: var(--project-border-strong);
+
+    --color-ink: var(--project-ink);
+    --color-ink-muted: var(--project-ink-muted);
+    --color-ink-soft: var(--project-ink-soft);
+}
